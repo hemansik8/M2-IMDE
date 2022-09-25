@@ -1,0 +1,48 @@
+{% extends './common/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<main class="page lanidng-page">
+    <section class="portfolio-block block-intro">
+        <div class="container">
+            <div class="about-me">
+                <p style="color: var(--bs-link-color);font-family: Acme, sans-serif;">Welcome to the To-Do Application!!
+                </p>
+                <p style="color: var(--bs-link-color);font-family: Acme, sans-serif;">Be productive!!</p>
+            </div>
+        </div>
+    </section>
+    <section class="portfolio-block skills" style="background: #f7f4f4;">
+        <div class="container">
+            <div class="heading">
+                <h2 style="color: rgb(0, 4, 10);">Hemansi J051</h2>
+            </div>
+            <div class="row">
+                {% if person %}
+                {% for i in person %}
+                <div class="col-md-4">
+                    <div class="card special-skill-item border-0">
+                        <div class="card-header bg-transparent border-0"><i class="icon ion-ios-star-outline"></i></div>
+                        <div class="card-body">
+                            <h3 class="card-title">{{i.name}}</h3>
+                            <p class="card-text">{{i.description}}</p>
+                            <span>Gender : {{i.gender}}</span>
+                            <span>Created at: {{i.created_at}} </span><br />
+                            <span>Updated at: {{i.updated_at}}</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+
+                {% endif %}
+
+            </div>
+        </div>
+    </section>
+    <section class="portfolio-block skills"></section>
+</main>
+
+{% endblock %}

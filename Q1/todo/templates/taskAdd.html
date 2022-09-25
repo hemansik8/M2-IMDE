@@ -1,0 +1,31 @@
+{% extends './common/base.html' %}
+
+{% load static %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+
+<main class="page projects-page">
+    <section class="portfolio-block projects-cards">
+        <h2 style = 'text-align: center;'>Add New Task Form</h2>
+    <form action = "{% url 'taskAdd' %}" method = 'post'>
+        {% csrf_token %}
+        <label>Name</label>
+        {% render_field forms.name %}<br/>
+        <label>Description</label>
+        {% render_field forms.description %}<br/>
+        <label>Start Day</label>
+        {% render_field forms.start_day %}<br/>
+        <label>End Day</label>
+        {% render_field forms.end_day %}<br/>
+        <label>Priority</label>
+        {% render_field forms.priority %}<br/>
+        <br>
+        <button type = "submit">Submit</button>
+
+    </form>
+</section>
+</main>
+
+{% endblock %}

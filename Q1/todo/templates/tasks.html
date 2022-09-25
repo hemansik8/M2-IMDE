@@ -1,0 +1,51 @@
+{% extends './common/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<main class="page projects-page">
+    <section class="portfolio-block projects-cards">
+        <div class="container">
+            <div class="heading">
+                <h2>Complete your tasks mentioned:</h2>
+            </div>
+            {% if messages %}
+            {% for message in messages %}
+            <div class='alert-primary' role='alert'>
+                {{message}}
+            </div>
+            {% endfor %}
+            {% endif %}
+            <div class="row" id="newProj">
+                <a href="{% url 'add' %}"><button type="button" class="btn btn-outline-primary">New Task</button></a>
+            </div>
+            <div class="row mt-4">
+                {% for i in task %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0"><a href="#"><img class="card-img-top scale-on-hover"
+                                src="{% static 'img/nature/image6.jpg' %}" alt="Card Image"></a>
+                        <div class="card-body">
+                            <h6><a href="#">{{i.name}}</a></h6>
+                            <p class="text-muted card-text">{{i.description}}</p>
+                            <span>Start Day : {{i.start_day}}</span>
+                            <span>End Day : {{i.end_day}}</span>
+                            <span>Task Priority : {{i.priority}}</span>
+                            <span>Task created at : {{i.created_at}}</span>
+                            <span>Task updated at : {{i.updated_at}}</span>
+                            <!-- <a href = "{% url 'taskUpdate' i.id %}">
+                                    <button class = "btn btn-warning">Update</button>
+                                </a> -->
+                            <a href="{% url 'taskDelete' i.id %}">
+                                <button class="btn btn-danger">Delete Task</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}
